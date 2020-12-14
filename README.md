@@ -66,8 +66,8 @@ INSTALAÇÃO PARA DESENVOLVEDORES
 INSTALAÇÃO NO CLIENTE
 ------------
 * GIT
-    * $ git clone do projeto - https://gitlab.com/lgerardlucas/py-send-email.git
-
+    * $ git clone do projeto - https://github.com/lgerardlucas/py-send-email.git
+    
 * LINUX
     * apt install python-psycopg2
     * apt install git
