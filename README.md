@@ -67,7 +67,7 @@ INSTALAÇÃO NO CLIENTE
 ------------
 * GIT
     * $ git clone do projeto - https://github.com/lgerardlucas/py-send-email.git
-    
+
 * LINUX
     * apt install python-psycopg2
     * apt install git
@@ -76,7 +76,7 @@ INSTALAÇÃO NO CLIENTE
     * Neste arquivo, configure somente o acesso ao banco online e host
 
 EXECUTAR O SISTEMA
-------------
+------------------
 * Para alimentaro banco onine - Rodar em todas as empresas auditadas
     * python caminho do projeto/py_auditit.py    
     * Exexmplo para uma gendamento no linux 
