@@ -40,7 +40,7 @@ def alert_cell_diff(**kwargs):
         else:    
             #return tag_html
             return kwargs.get('tag_html_atual')                
-    elif 'A(HD)' in kwargs.get('key_data'):
+    elif 'HD' in kwargs.get('key_data'):
         if kwargs.get('date_data').replace('%','') and int(kwargs.get('date_data').replace('%','')) >= 90:
             return '<td style="color:white; font-size: 16px; text-align: right; background-color: rgb(139, 0, 0);">'
         else:

@@ -38,6 +38,7 @@ msg.add_header('Content-Type', 'text/html')
 #msg.set_payload(get_template_bory_email_vertical())
 
 # Renderiza corpo do email em dois formatos, vertical e horinzontal por empresa
+print(get_template_bory_email_vertical())
 msg.set_payload(get_template_bory_email_vertical()+"\n<br>"+get_template_bory_email_horizontal())
 
 # Este print, mostra o html com dados reais, onde podemos colocá-lo em um arquivo .html e olhar no navegador 

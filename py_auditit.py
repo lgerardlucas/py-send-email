@@ -73,8 +73,8 @@ if COMPANY:
     # Nao incluir textos acentuados ate que seja feita a conversao para uft8 no futuro    
     SQL_CLOUD_INSERT_DICT = (
         {"company":""+COMPANY+"", "key":"Auditoria(TI)",            "value": ""+str(DATA_AUDITIT)+"",   "date":""+str(DATA_AUDITIT)+"" },
-        {"company":""+COMPANY+"", "key":"A(HD)\nSO",                "value": ""+hd1_size_percent+"",               "date":""+str(DATA_AUDITIT)+"" },
-        {"company":""+COMPANY+"", "key":"A(HD)\nBD",                "value": ""+hd2_size_percent+"",               "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":"A(HD)\nSO",                "value": ""+hd1_size_percent+"",    "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":"A(HD)\nBD",                "value": ""+hd2_size_percent+"",    "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Compras)",    "value": ""+str(QTDE_NOTASC)+"",    "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Estoque)",    "value": ""+str(QTDE_NOTASE)+"",    "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Fature)",     "value": ""+str(QTDE_NOTASF)+"",    "date":""+str(DATA_AUDITIT)+"" },
