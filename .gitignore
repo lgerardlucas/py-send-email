@@ -2,6 +2,7 @@
 *.sqlite3
 mvenv
 myvenv
+git_pull.sh
 *.pyc
 *.ini
 .env

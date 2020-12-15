@@ -40,7 +40,7 @@ PROGRAMADOR RESPONSÁVEL
 INSTALAÇÃO PARA DESENVOLVEDORES
 ------------
 * GIT
-    * $ git clone do projeto - act
+    * $ apt install git
 
 * VIRTUALENV 
     * $ python -m virtualenv myvenv
@@ -66,7 +66,7 @@ INSTALAÇÃO PARA DESENVOLVEDORES
 INSTALAÇÃO NO CLIENTE
 ------------
 * GIT
-    * $ git clone do projeto - https://github.com/lgerardlucas/py-send-email.git
+    * $ git clone https://github.com/lgerardlucas/py-send-email.git
 
 * LINUX
     * apt install python3 python-dev python3-dev
@@ -80,13 +80,15 @@ EXECUTAR O SISTEMA
 ------------------
 * Para alimentaro banco onine - Rodar em todas as empresas auditadas
     * python caminho do projeto/py_auditit.py    
-    * Exexmplo para uma gendamento no linux 
-      00 21 * * * root python /caminho até o projeto/py-send-email/py_auditit.py
+    * Exexmplo para uma gendamento no linux sem virtaulenv e com virtuaenv
+      Sem = 00 21 * * * root python /caminho até o projeto/py-send-email/py_auditit.py
+      Com = 00 21 * * * root /opt/py-audit-1/py-send-email/myvenv/bin/python3 /opt/py-audit-1/py-send-email/py_auditit.py
 
 * Para envio do e-mail com os dados do banco online - Rodar somente na empresa auditora
     * python caminho do projeto/py_email.py    
-    * Exexmplo para uma gendamento no linux 
-      00 21 * * * root python /caminho até o projeto/py-send-email/py_email.py
+    * Exexmplo para uma gendamento no linux com e sem virtualenv
+      Sem = 00 21 * * * root python /caminho até o projeto/py-send-email/py_email.py
+      Com = 00 21 * * * root /opt/py-audit-1/py-send-email/myvenv/bin/python3 /opt/py-audit-1/py-send-email/py_email.py
 
 * Para atualização do sistema no cliente, antes do processo de auditoria.  
     * Exexmplo para uma gendamento no linux 
