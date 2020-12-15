@@ -65,6 +65,10 @@ INSTALAÇÃO PARA DESENVOLVEDORES
 
 INSTALAÇÃO NO CLIENTE
 ------------
+* Local
+    * mkdir /opt/py-audit-0   -- Pasta para instalar no servidor produção
+    * mkdir /opt/py-audit-1   -- Pasta para instalar no servidor contingencia
+    * mkdir /opt/py-audit-2   -- Pasta para instalar no servidor contingencia
 * GIT
     * $ git clone https://github.com/lgerardlucas/py-send-email.git teste
 
