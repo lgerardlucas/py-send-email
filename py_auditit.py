@@ -38,7 +38,6 @@ if get_device1_path():
 hd2_size_percent = ''
 if get_device2_path(): 
    hd2_size_percent   = os.popen("df -h "+get_device2_path()+"  | awk '{ print $5 }' | head -n3 | tail -1").read()
-
 if not hd1_size_percent:
     hd1_size_percent = '0%'
 if not hd2_size_percent:
