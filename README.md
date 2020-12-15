@@ -70,7 +70,7 @@ INSTALAÇÃO NO CLIENTE
 
 * LINUX
     * apt install python-psycopg2
-    * apt install git
+    * apt install git.
 
 * CONF.INI
     * Neste arquivo, configure somente o acesso ao banco online e host
