@@ -5,5 +5,5 @@
 # Arquivo responsavel por atualizar o sistema via git pull.
 # Esta atualizaçao e importante acontecer antes de rodar o sistema
 cd /
-cd /opt/Trabin-Software/TSC-ERPs/py-send-email/
+cd /opt/py-audit-1/py-send-email//
 git pull

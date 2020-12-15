@@ -66,7 +66,7 @@ INSTALAÇÃO PARA DESENVOLVEDORES
 INSTALAÇÃO NO CLIENTE
 ------------
 * GIT
-    * $ git clone https://github.com/lgerardlucas/py-send-email.git teset
+    * $ git clone https://github.com/lgerardlucas/py-send-email.git teste
 
 * LINUX
     * apt install python3 python-dev python3-dev
