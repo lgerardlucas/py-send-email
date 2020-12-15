@@ -69,6 +69,7 @@ INSTALAÇÃO NO CLIENTE
     * $ git clone do projeto - https://github.com/lgerardlucas/py-send-email.git
 
 * LINUX
+    * apt install python3 python-dev python3-dev
     * apt install python-psycopg2
     * apt install git.
 

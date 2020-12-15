@@ -48,3 +48,7 @@ PORT=
 PASSWD=
 ID=
 
+# HOST - Endereco dos devices linux - Maximo 2 (/raiz = S.O e /opt = BD)
+[DEVICE]
+DEVICE1=/dev/sda1
+DEVICE2=/dev/sdb1

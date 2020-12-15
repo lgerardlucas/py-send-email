@@ -135,4 +135,11 @@ if get_exists_file('conf.ini') != '':
 
     def get_config_email_port():
         return cfg.get('EMAIL','PORT')
+
+    # GET referente aos caminhos dos devices a ser analisado em seu tamanho
+    def get_device1_path():
+        return cfg.get('DEVICE','DEVICE1')
+
+    def get_device2_path():
+        return cfg.get('DEVICE','DEVICE2')
         

@@ -28,6 +28,7 @@ from settings import (
     get_config_contingency_server_db,
     get_config_contingency_server_port,
     get_config_contingency_server_passwd,
+
     )
 
 # HOST = Conecta a um banco interno

@@ -13,7 +13,13 @@ from py_database import (get_database_data,
     delete_database_data_online,
     insert_database_data_online
 )
-from settings import get_config_company_name_auditit,get_config_product_server_id,get_version,get_weekday,get_date_auditit
+from settings import (get_config_company_name_auditit,
+    get_config_product_server_id,
+    get_version,get_weekday,
+    get_date_auditit,
+    get_device1_path,
+    get_device2_path
+    )
 
 '''
 Retorna o tamanho total, usado, disponivel e percentual do particao 1 e 2
@@ -21,12 +27,12 @@ Retorna o tamanho total, usado, disponivel e percentual do particao 1 e 2
 #hd1_size_total     = os.popen("df -h /dev/sda1  | awk '{ print $2 }' | head -n3 | tail -1").read()
 #hd1_size_used      = os.popen("df -h /dev/sda1  | awk '{ print $3 }' | head -n3 | tail -1").read()
 #hd1_size_available = os.popen("df -h /dev/sda1  | awk '{ print $4 }' | head -n3 | tail -1").read()
-hd1_size_percent   = os.popen("df -h /dev/sda1  | awk '{ print $5 }' | head -n3 | tail -1").read()
+hd1_size_percent   = os.popen("df -h "+get_device1_path()+" | awk '{ print $5 }' | head -n3 | tail -1").read()
 
 #hd2_size_total     = os.popen("df -h /dev/sdb1  | awk '{ print $2 }' | head -n3 | tail -1").read()
 #hd2_size_used      = os.popen("df -h /dev/sdb1  | awk '{ print $3 }' | head -n3 | tail -1").read()
 #hd2_size_available = os.popen("df -h /dev/sdb1  | awk '{ print $4 }' | head -n3 | tail -1").read()
-hd2_size_percent   = os.popen("df -h /dev/sdb1  | awk '{ print $5 }' | head -n3 | tail -1").read()
+hd2_size_percent   = os.popen("df -h "+get_device1_path()+"  | awk '{ print $5 }' | head -n3 | tail -1").read()
 if not hd1_size_percent:
     hd1_size_percent = '0%'
 if not hd2_size_percent:
