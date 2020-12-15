@@ -27,14 +27,18 @@ Retorna o tamanho total, usado, disponivel e percentual do particao 1 e 2
 #hd1_size_total     = os.popen("df -h /dev/sda1  | awk '{ print $2 }' | head -n3 | tail -1").read()
 #hd1_size_used      = os.popen("df -h /dev/sda1  | awk '{ print $3 }' | head -n3 | tail -1").read()
 #hd1_size_available = os.popen("df -h /dev/sda1  | awk '{ print $4 }' | head -n3 | tail -1").read()
+hd1_size_percent = ''
 if get_device1_path():
     hd1_size_percent   = os.popen("df -h "+get_device1_path()+" | awk '{ print $5 }' | head -n3 | tail -1").read()
 
 #hd2_size_total     = os.popen("df -h /dev/sdb1  | awk '{ print $2 }' | head -n3 | tail -1").read()
 #hd2_size_used      = os.popen("df -h /dev/sdb1  | awk '{ print $3 }' | head -n3 | tail -1").read()
 #hd2_size_available = os.popen("df -h /dev/sdb1  | awk '{ print $4 }' | head -n3 | tail -1").read()
+
+hd2_size_percent = ''
 if get_device2_path(): 
    hd2_size_percent   = os.popen("df -h "+get_device2_path()+"  | awk '{ print $5 }' | head -n3 | tail -1").read()
+
 if not hd1_size_percent:
     hd1_size_percent = '0%'
 if not hd2_size_percent:
