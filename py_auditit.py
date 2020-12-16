@@ -18,8 +18,16 @@ from settings import (get_config_company_name_auditit,
     get_version,get_weekday,
     get_date_auditit,
     get_device1_path,
-    get_device2_path
+    get_device2_path,
+    get_config_product_server_db,
     )
+'''
+Retorna o tamanho do banco a ser monitorado
+'''
+size_database_host = get_database_data("SELECT pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database where datname = '"+get_config_product_server_db()+"'")
+if not size_database_host:
+    size_database_host = '0MB'
+
 
 '''
 Retorna o tamanho total, usado, disponivel e percentual do particao 1 e 2
@@ -94,6 +102,8 @@ if COMPANY:
         {"company":""+COMPANY+"", "key":".HD(BD)2\nUsado",          "value": ""+hd2_size_used+"",      "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":".HD(BD)3\nDispo",          "value": ""+hd2_size_available+"", "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":".HD(BD)4\n%Uso",           "value": ""+hd2_size_percent+"",   "date":""+str(DATA_AUDITIT)+"" },
+        
+        {"company":""+COMPANY+"", "key":".Tamanho\n"+get_config_product_server_db(),  "value": ""+size_database_host+"", "date":""+str(DATA_AUDITIT)+"" },
 
 
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Compras)",    "value": ""+str(QTDE_NOTASC)+"",    "date":""+str(DATA_AUDITIT)+"" },
