@@ -41,7 +41,7 @@ if get_exists_file('conf.ini') != '':
 
     # GET dia da semana a que pertence uma data
     def get_weekday():
-        dias   = ('Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo')
+        dias   = ('Segunda-feira', 'Terca-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado', 'Domingo')
         return dias[get_date_auditit().weekday()]
 
     # GET da data -1 dia para auditoria

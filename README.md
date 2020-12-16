@@ -70,7 +70,7 @@ INSTALAÇÃO NO CLIENTE
     * mkdir /opt/py-audit-1   -- Pasta para instalar no servidor contingencia
     * mkdir /opt/py-audit-2   -- Pasta para instalar no servidor contingencia
 * GIT
-    * $ git clone https://github.com/lgerardlucas/py-send-email.git teste
+    * $ git clone https://github.com/lgerardlucas/py-send-email.git 
 
 * LINUX
     * apt install python3 python-dev python3-dev
@@ -84,13 +84,13 @@ EXECUTAR O SISTEMA
 ------------------
 * Para alimentaro banco onine - Rodar em todas as empresas auditadas
     * python caminho do projeto/py_auditit.py    
-    * Exexmplo para uma gendamento no linux sem virtaulenv e com virtuaenv
+    * Exemplo para uma gendamento no linux sem virtaulenv e com virtuaenv
       Sem = 00 21 * * * root python /opt/py-audit-0/py-send-email/py_auditit.py
       Com = 00 21 * * * root /opt/py-audit-0/py-send-email/myvenv/bin/python3 /opt/py-audit-0/py-send-email/py_auditit.py
 
 * Para envio do e-mail com os dados do banco online - Rodar somente na empresa auditora
     * python caminho do projeto/py_email.py    
-    * Exexmplo para uma gendamento no linux com e sem virtualenv
+    * Exemplo para uma gendamento no linux com e sem virtualenv
       Sem = 00 21 * * * root python /opt/py-audit-0/py-send-email/py_email.py
       Com = 00 21 * * * root /opt/py-audit-0/py-send-email/myvenv/bin/python3 /opt/py-audit-0/py-send-email/py_email.py
 
@@ -98,27 +98,3 @@ EXECUTAR O SISTEMA
     * Exexmplo para uma gendamento no linux 
       00 09 * * * root sh /opt/py-audit-0/py-send-email/git_pull.sh
 
-GIT - Script
------------
-* Para que o sistema seja atualizado automaticamente, podemos utilizar um scritp linux incluindo estes comandos, 
-do qual já esta em nosso git o arquivo .sh. Basta incluí-lo no agendamento do linux
-
-#!/bin/bash
-cd /  
-cd /caminho-do-sistema/py-send-email/  
-git pull  
-
-
-AGENDAMENTO
------------
-* O módulo py_auditit.py, único arquivo python que será executado no cliente, deverá ser acionado via script linux.
-Esta foi a solução escolhida. 
-    * Exemplo de agendamento
-        * Acesse: # nano /etc/crontab
-        * Inclua: MM HH * * * root python caminho-do-sistema/py_auditit.py
-
-* O módulo py_email.py, único arquivo python a ser executado na sua empresa, deverá ser acionado via script linux.
-Esta foi a solução escolhida. 
-    * Exemplo de agendamento
-        * Acesse: # nano /etc/crontab
-        * Inclua: MM HH * * * root python caminho-do-sistema/py_email.py

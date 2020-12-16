@@ -24,25 +24,25 @@ from settings import (get_config_company_name_auditit,
 '''
 Retorna o tamanho total, usado, disponivel e percentual do particao 1 e 2
 '''
-#hd1_size_total     = os.popen("df -h /dev/sda1  | awk '{ print $2 }' | head -n3 | tail -1").read()
-#hd1_size_used      = os.popen("df -h /dev/sda1  | awk '{ print $3 }' | head -n3 | tail -1").read()
-#hd1_size_available = os.popen("df -h /dev/sda1  | awk '{ print $4 }' | head -n3 | tail -1").read()
-hd1_size_percent = ''
+hd1_size_total = '0%'
+hd1_size_used = '0%'
+hd1_size_available = '0%'
+hd1_size_percent = '0%'
 if get_device1_path():
-    hd1_size_percent   = os.popen("df -h "+get_device1_path()+" | awk '{ print $5 }' | head -n3 | tail -1").read()
+    hd1_size_total     = os.popen("df -h "+get_device1_path()+"  | awk '{ print $2 }' | head -n3 | tail -1").read()
+    hd1_size_used      = os.popen("df -h "+get_device1_path()+"  | awk '{ print $3 }' | head -n3 | tail -1").read()
+    hd1_size_available = os.popen("df -h "+get_device1_path()+"  | awk '{ print $4 }' | head -n3 | tail -1").read()
+    hd1_size_percent   = os.popen("df -h "+get_device1_path()+"  | awk '{ print $5 }' | head -n3 | tail -1").read()
 
-#hd2_size_total     = os.popen("df -h /dev/sdb1  | awk '{ print $2 }' | head -n3 | tail -1").read()
-#hd2_size_used      = os.popen("df -h /dev/sdb1  | awk '{ print $3 }' | head -n3 | tail -1").read()
-#hd2_size_available = os.popen("df -h /dev/sdb1  | awk '{ print $4 }' | head -n3 | tail -1").read()
-
-hd2_size_percent = ''
+hd2_size_total = '0%'
+hd2_size_used = '0%'
+hd2_size_percent = '0%'
+hd2_size_available = '0%'
 if get_device2_path(): 
-   hd2_size_percent   = os.popen("df -h "+get_device2_path()+"  | awk '{ print $5 }' | head -n3 | tail -1").read()
-if not hd1_size_percent:
-    hd1_size_percent = '0%'
-if not hd2_size_percent:
-    hd2_size_percent = '0%'
-
+    hd2_size_total     = os.popen("df -h "+get_device2_path()+"  | awk '{ print $2 }' | head -n3 | tail -1").read()
+    hd2_size_percent   = os.popen("df -h "+get_device2_path()+"  | awk '{ print $5 }' | head -n3 | tail -1").read()
+    hd2_size_used      = os.popen("df -h "+get_device2_path()+"  | awk '{ print $3 }' | head -n3 | tail -1").read()
+    hd2_size_available = os.popen("df -h "+get_device2_path()+"  | awk '{ print $4 }' | head -n3 | tail -1").read()
 
 # GET referente as configurações - Retorna nome da empresa monitorada
 COMPANY = get_config_company_name_auditit()
@@ -77,15 +77,25 @@ if COMPANY:
 
     # Retorna o dia -1 para aditoria
     DATA_AUDITIT = get_date_auditit()
-   
+
     # Retorna o dia da semana da auditoria
     DIA_AUDITIT = get_weekday()
 
     # Nao incluir textos acentuados ate que seja feita a conversao para uft8 no futuro    
     SQL_CLOUD_INSERT_DICT = (
-        {"company":""+COMPANY+"", "key":"Auditoria(TI)",            "value": ""+str(DATA_AUDITIT)+"",   "date":""+str(DATA_AUDITIT)+"" },
-        {"company":""+COMPANY+"", "key":"A(HD)\nSO",                "value": ""+hd1_size_percent+"",    "date":""+str(DATA_AUDITIT)+"" },
-        {"company":""+COMPANY+"", "key":"A(HD)\nBD",                "value": ""+hd2_size_percent+"",    "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":"Auditoria\n(TI)",          "value": ""+str(DATA_AUDITIT.strftime('%d/%m/%y'))+"",   "date":""+str(DATA_AUDITIT)+"" },
+
+        {"company":""+COMPANY+"", "key":".HD(SO)1\nTotal",          "value": ""+hd1_size_total+"",     "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".HD(SO)2\nUsado",          "value": ""+hd1_size_used+"",      "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".HD(SO)3\nDispo",          "value": ""+hd1_size_available+"", "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".HD(SO)4\n%Uso",           "value": ""+hd1_size_percent+"",   "date":""+str(DATA_AUDITIT)+"" },
+
+        {"company":""+COMPANY+"", "key":".HD(BD)1\nTotal",          "value": ""+hd2_size_total+"",     "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".HD(BD)2\nUsado",          "value": ""+hd2_size_used+"",      "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".HD(BD)3\nDispo",          "value": ""+hd2_size_available+"", "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".HD(BD)4\n%Uso",           "value": ""+hd2_size_percent+"",   "date":""+str(DATA_AUDITIT)+"" },
+
+
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Compras)",    "value": ""+str(QTDE_NOTASC)+"",    "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Estoque)",    "value": ""+str(QTDE_NOTASE)+"",    "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Fature)",     "value": ""+str(QTDE_NOTASF)+"",    "date":""+str(DATA_AUDITIT)+"" },
@@ -101,4 +111,6 @@ if COMPANY:
         {"company":""+COMPANY+"", "key":"Produtos\n(Geral)",        "value": ""+str(QTDE_PRODUTOS)+"",  "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":"Versao",                   "value": ""+get_version()+"",       "date":""+str(DATA_AUDITIT)+"" }
     )
+       
     insert_database_data_online(SQL_CLOUD_INSERT_DICT)
+

@@ -7,6 +7,8 @@
 # TAGs HTMLs no corpo do e-mail.
 # Este módulo é consumido pelo arquivo py_email.py
 import os
+from unidecode import unidecode
+from unicodedata import normalize
 from settings import (
     get_config_company_name,
     get_config_company_copyright,
@@ -40,7 +42,7 @@ def alert_cell_diff(**kwargs):
         else:    
             #return tag_html
             return kwargs.get('tag_html_atual')                
-    elif 'HD' in kwargs.get('key_data'):
+    elif '%Uso' in kwargs.get('key_data'):
         if kwargs.get('date_data').replace('%','') and int(kwargs.get('date_data').replace('%','')) >= 90:
             return '<td style="color:white; font-size: 16px; text-align: right; background-color: rgb(139, 0, 0);">'
         else:
@@ -49,7 +51,7 @@ def alert_cell_diff(**kwargs):
         return kwargs.get('tag_html_atual')    
 
 # -------- CORPO DO EMAIL COM AS EMPRESAS NA HORIZONTAL ----------
-def get_template_bory_email_horizontal():
+def get_template_bory_email_horizontal(action_send):
     bory_horizontal =  """
     <!DOCTYPE html>
     <html>
@@ -107,7 +109,10 @@ def get_template_bory_email_horizontal():
     bory_horizontal = bory_horizontal + '<th style="font-size: 16px; text-align: center;"><b>Empresas(TI)</b></th>'
 
     # GET online dos dados de monitoramento
-    db_monitor    = get_database_data_online('Select * From monitora order by company,key') 
+    if action_send == 1:
+        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by key,company") 
+    else:       
+        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by key,company") 
 
     # Loop para montar o cabeçalho da tabela
 
@@ -124,15 +129,15 @@ def get_template_bory_email_horizontal():
 
         # Demais células referente aos títulos das colunas com os nomes das empresas
         if not break_company:
-            bory_horizontal = bory_horizontal + '<td style="font-size: 16px; text-align: center;"><b>'+company+'</b></td>'
+            bory_horizontal = bory_horizontal + '<td style="font-size: 14px; text-align: center;"><b>'+company+'</b></td>'
             count_col_company = count_col_company + 1
         elif break_company != company:
-                bory_horizontal = bory_horizontal + '<td style="font-size: 16px; text-align: center;"><b>'+company+'</b></td>'
+                bory_horizontal = bory_horizontal + '<td style="font-size: 14px; text-align: center;"><b>'+company+'</b></td>'
                 count_col_company = count_col_company + 1
         break_company = company
 
     # GET online dos dados de monitoramento
-    db_monitor      = get_database_data_online('Select * From monitora order by key,company') 
+    #db_monitor      = get_database_data_online('Select * From monitora order by key,company') 
     
  
     bory_horizontal = bory_horizontal + '</tr>'
@@ -214,11 +219,12 @@ def get_template_bory_email_horizontal():
 
     </html>
     """
+    bory_horizontal = normalize('NFKD', bory_horizontal).encode('ASCII','ignore').decode('ASCII')
     return bory_horizontal
 
 # -------- CORPO DO EMAIL COM AS EMPRESAS NA VERTICAL ----------
     
-def get_template_bory_email_vertical():
+def get_template_bory_email_vertical(action_send):
     bory_vertical =  """
     <!DOCTYPE html>
     <html>
@@ -276,8 +282,11 @@ def get_template_bory_email_vertical():
     bory_vertical = bory_vertical + '<th style="font-size: 16px; text-align: center;"><b>Empresas(TI)</b></th>'
 
     # GET online dos dados de monitoramento
-    db_monitor    = get_database_data_online('Select * From monitora order by key,company') 
-
+    if action_send == 1:
+        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by key,company") 
+    else:       
+        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by key,company") 
+    
     # Loop para montar o cabecalho da tabela
     break_key = ''
     # Conta as colunas para expandir via tag=colspan a ultima céeula destinada ao footer
@@ -292,13 +301,13 @@ def get_template_bory_email_vertical():
 
         # Demais celulas referente aos titulos das colunas com os nomes das chaves(key)
         if not break_key:
-            bory_vertical = bory_vertical + '<td style="font-size: 16px; text-align: center;"><b>'+key+'</b></td>'
+            bory_vertical = bory_vertical + '<td style="font-size: 14px; text-align: center;"><b>'+key+'</b></td>'
         elif break_key != key:
-                bory_vertical = bory_vertical + '<td style="font-size: 16px; text-align: center;"><b>'+key+'</b></td>'
+                bory_vertical = bory_vertical + '<td style="font-size: 14px; text-align: center;"><b>'+key+'</b></td>'
         break_key = key
 
     # GET online dos dados de monitoramento
-    db_monitor    = get_database_data_online('Select * From monitora order by company,key') 
+    #db_monitor    = get_database_data_online('Select * From monitora order by company,key') 
 
     bory_vertical = bory_vertical + '</tr>'
     bory_vertical = bory_vertical + '<tr>'
@@ -383,5 +392,6 @@ def get_template_bory_email_vertical():
 
     </html>
     """
-    return bory_vertical
+    bory_vertical = normalize('NFKD', bory_vertical ).encode('ASCII','ignore').decode('ASCII')
+    return bory_vertical 
 
