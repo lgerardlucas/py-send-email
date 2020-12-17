@@ -110,9 +110,9 @@ def get_template_bory_email_horizontal(action_send):
 
     # GET online dos dados de monitoramento
     if action_send == 1:
-        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by key,company") 
+        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by company,key") 
     else:       
-        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by key,company") 
+        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by company,key") 
 
     # Loop para montar o cabeçalho da tabela
 
@@ -138,9 +138,9 @@ def get_template_bory_email_horizontal(action_send):
 
     # GET online dos dados de monitoramento repete pra poder order corretamente a montagem do html
     if action_send == 1:
-        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by company,key") 
+        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by key,company") 
     else:       
-        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by company,key") 
+        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by key,company") 
   
  
     bory_horizontal = bory_horizontal + '</tr>'

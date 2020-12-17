@@ -19,12 +19,12 @@ from settings import (get_config_company_name_auditit,
     get_date_auditit,
     get_device1_path,
     get_device2_path,
-    get_config_product_server_db,
+    get_config_product_server_db,get_config_product_server_ip,
     )
 '''
 Retorna o tamanho do banco a ser monitorado
 '''
-size_database_host = get_database_data("SELECT pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database where datname = '"+get_config_product_server_db()+"'")
+size_database_host = get_database_data("SELECT pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database where datname = '"+get_config_product_server_db()+"'").replace(' ','')
 if not size_database_host:
     size_database_host = '0MB'
 
@@ -104,6 +104,7 @@ if COMPANY:
         {"company":""+COMPANY+"", "key":".HD(BD)4\n%Uso",           "value": ""+hd2_size_percent+"",   "date":""+str(DATA_AUDITIT)+"" },
         
         {"company":""+COMPANY+"", "key":".Tamanho\nBanco",          "value": ""+get_config_product_server_db()+"\n"+size_database_host+"", "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".IP\Servidor",             "value": ""+get_config_product_server_ip()+"", "date":""+str(DATA_AUDITIT)+"" },
 
 
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Compras)",    "value": ""+str(QTDE_NOTASC)+"",    "date":""+str(DATA_AUDITIT)+"" },
