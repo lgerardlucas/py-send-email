@@ -22,7 +22,7 @@ from settings import (get_config_company_name_auditit,
     get_config_product_server_db,get_config_product_server_ip,
     )
 '''
-Retorna o tamanho do banco a ser monitorado
+Retorna o tamanho do banco   a ser monitorado
 '''
 size_database_host = get_database_data("SELECT pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database where datname = '"+get_config_product_server_db()+"'").replace(' ','')
 if not size_database_host:
