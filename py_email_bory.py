@@ -7,7 +7,6 @@
 # TAGs HTMLs no corpo do e-mail.
 # Este módulo é consumido pelo arquivo py_email.py
 import os
-from unidecode import unidecode
 from unicodedata import normalize
 from settings import (
     get_config_company_name,
