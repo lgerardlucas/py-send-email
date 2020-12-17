@@ -103,7 +103,7 @@ if COMPANY:
         {"company":""+COMPANY+"", "key":".HD(BD)3\nDispo",          "value": ""+hd2_size_available+"", "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":".HD(BD)4\n%Uso",           "value": ""+hd2_size_percent+"",   "date":""+str(DATA_AUDITIT)+"" },
         
-        {"company":""+COMPANY+"", "key":".Tamanho\n"+get_config_product_server_db(),  "value": ""+size_database_host+"", "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":".Tamanho\nBanco",          "value": ""+get_config_product_server_db()+"\n"+size_database_host+"", "date":""+str(DATA_AUDITIT)+"" },
 
 
         {"company":""+COMPANY+"", "key":"Qtde Notas\n(Compras)",    "value": ""+str(QTDE_NOTASC)+"",    "date":""+str(DATA_AUDITIT)+"" },

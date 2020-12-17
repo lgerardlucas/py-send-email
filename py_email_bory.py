@@ -136,9 +136,12 @@ def get_template_bory_email_horizontal(action_send):
                 count_col_company = count_col_company + 1
         break_company = company
 
-    # GET online dos dados de monitoramento
-    #db_monitor      = get_database_data_online('Select * From monitora order by key,company') 
-    
+    # GET online dos dados de monitoramento repete pra poder order corretamente a montagem do html
+    if action_send == 1:
+        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by company,key") 
+    else:       
+        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by company,key") 
+  
  
     bory_horizontal = bory_horizontal + '</tr>'
     bory_horizontal = bory_horizontal + '<tr>'
@@ -306,8 +309,11 @@ def get_template_bory_email_vertical(action_send):
                 bory_vertical = bory_vertical + '<td style="font-size: 14px; text-align: center;"><b>'+key+'</b></td>'
         break_key = key
 
-    # GET online dos dados de monitoramento
-    #db_monitor    = get_database_data_online('Select * From monitora order by company,key') 
+    # GET online dos dados de monitoramento repete pra poder order corretamente a montagem do html
+    if action_send == 1:
+        db_monitor    = get_database_data_online("Select * From monitora Where key not like '.%'   order by company,key") 
+    else:       
+        db_monitor    = get_database_data_online("Select * From monitora Where key like '.%'  order by company,key") 
 
     bory_vertical = bory_vertical + '</tr>'
     bory_vertical = bory_vertical + '<tr>'

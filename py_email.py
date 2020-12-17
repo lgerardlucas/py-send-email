@@ -43,10 +43,10 @@ while (contador < 2):
     #msg.set_payload(get_template_bory_email_horizontal())
 
     # Renderiza corpo do email em formato VERTICAL por empresa, ou seja, as empresas na coluna
-    #msg.set_payload(get_template_bory_email_vertical(int(contador)))
+    msg.set_payload(get_template_bory_email_vertical(int(contador)))
 
     # Renderiza corpo do email em dois formatos, vertical e horinzontal por empresa
-    msg.set_payload(get_template_bory_email_vertical(int(contador))+"\n<br>"+get_template_bory_email_horizontal(int(contador)))
+    #msg.set_payload(get_template_bory_email_vertical(int(contador))+"\n<br>"+get_template_bory_email_horizontal(int(contador)))
 
     # Este print, mostra o html com dados reais, onde podemos colocá-lo em um arquivo .html e olhar no navegador 
     # seu comportamento. 
