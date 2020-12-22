@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
 # py_auditit.py = Arquivo de auditoria
-# Autor: Marcos André Gerard Alves - V1.00 - 04/10/2019
+# Autor: Marcos Andre Gerard Alves - V1.00 - 04/10/2019
 
-# Módulo responsável por coletar informações do banco host,
+# Modulo responsavel por coletar informacoes do banco host,
 # a fim de preparar e enviar os dados para o banco online, 
-# que serão contextualizado no corpo do e-mail pelo 
-# módulo py_email_bory.py
+# que serao contextualizado no corpo do e-mail pelo 
+# modulo py_email_bory.py
 import os
 from subprocess import PIPE, Popen
 from py_database import (get_database_data,
@@ -52,7 +52,7 @@ if get_device2_path():
     hd2_size_used      = os.popen("df -h "+get_device2_path()+"  | awk '{ print $3 }' | head -n3 | tail -1").read()
     hd2_size_available = os.popen("df -h "+get_device2_path()+"  | awk '{ print $4 }' | head -n3 | tail -1").read()
 
-# GET referente as configurações - Retorna nome da empresa monitorada
+# GET referente as configuracoes - Retorna nome da empresa monitorada
 COMPANY = get_config_company_name_auditit()
 
 # Analisa se existe uma empresa
@@ -64,7 +64,7 @@ if COMPANY:
     # ID da empresa quando se deseja ter um referencial nos dados do banco host
     ID = get_config_product_server_id()
 
-    # Dicionário com os dados coletados com a empresa host
+    # Dicionario com os dados coletados com a empresa host
     QTDE_NOTAS   = get_database_data('Select Count(*) From "NotaFiscal"  Where Case When '+str(ID)+' = 0 then true else "CodigoEmpresaNota" = '+str(ID)+' end and "DataEmissaoNota"     = Current_Date-1 and "ModuloOrigemNota"   in (' +"'%s'" %('TS-Compras')+','+"'%s'" %('TS-Fature')+','+"'%s'" %('TS-Pedido')+','+"'%s'" %('Inventario')+','+"'%s'" %('TS-Fiscal')+','+"'%s'" %('TS-Servico')+','+"'%s'" %('TS-Estoque')+ ')' )
     QTDE_NOTASC  = get_database_data('Select Count(*) From "NotaFiscal"  Where Case When '+str(ID)+' = 0 then true else "CodigoEmpresaNota" = '+str(ID)+' end and "DataEmissaoNota"     = Current_Date-1 And "ModuloOrigemNota"    = '+"'%s'" %('TS-Compras'))
     QTDE_NOTASF  = get_database_data('Select Count(*) From "NotaFiscal"  Where Case When '+str(ID)+' = 0 then true else "CodigoEmpresaNota" = '+str(ID)+' end and "DataEmissaoNota"     = Current_Date-1 And "ModuloOrigemNota"    = '+"'%s'" %('TS-Fature'))

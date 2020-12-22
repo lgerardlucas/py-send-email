@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
 # py_email_bory.py = Renderiza e contextualiza corpo do e-mail
-# Autor: Marcos André Gerard Alves - V1.00- 01/10/2019
+# Autor: Marcos Andre Gerard Alves - V1.00- 01/10/2019
 
-# Módulo responsável por renderizar e contextualizar um conjunto de 
+# Modulo responsavel por renderizar e contextualizar um conjunto de 
 # TAGs HTMLs no corpo do e-mail.
-# Este módulo é consumido pelo arquivo py_email.py
+# Este modulo e consumido pelo arquivo py_email.py
 import os
 from unicodedata import normalize
 from settings import (

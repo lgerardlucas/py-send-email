@@ -43,7 +43,8 @@ INSTALAÇÃO PARA DESENVOLVEDORES
     * $ apt install git
 
 * VIRTUALENV 
-    * $ python -m virtualenv myvenv
+    * $ python -m virtualenv myvenv ou
+    * $ virtualenv --python='/usr/bin/python3.6' myvenv
 
 * PIP
     * $ pip install -r requirements.txt 

@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
-# py_database.py = Arquivo de conexão e geração dos dados
-# Autor: Marcos André Gerard Alves - V1.00 - 01/10/2019
+# py_database.py = Arquivo de conexao e geraca dos dados
+# Autor: Marcos Andre Gerard Alves - V1.00 - 01/10/2019
 
-# Módulo destinado a estabelecer comunicação com os bancos de dados,
+# Modulo destinado a estabelecer comunicacao com os bancos de dados,
 # tanto ONLINE quanto HOST.
-# Sua outra função, é executar instruções SQLs enviadas por outros módulos,
-# inserindo, deletando e atualizando quando necessário 
+# Sua outra funca, e executar instrucoes SQLs enviadas por outros modulos,
+# inserindo, deletando e atualizando quando necessario 
 import os
 import psycopg2
 
@@ -41,7 +41,7 @@ con = psycopg2.connect(
 )
 cur = con.cursor()
 
-# HOST = Executa o SQL retornando uma única tupla 
+# HOST = Executa o SQL retornando uma unica tupla 
 def get_database_data(sql=''):
     cur.execute(sql)
     recset = cur.fetchall()

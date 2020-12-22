@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
 # py_email.py = Arquivo para envio do email
-# Autor: Marcos André Gerard Alves - V1.00 - 01/10/2019
+# Autor: Marcos Andre Gerard Alves - V1.00 - 01/10/2019
 
-# Módulo responsável por literalmente enviar o e-mail a seus
-# destinatários com informações em seu corpo, coletadas no 
+# Modulo responsavel por literalmente enviar o e-mail a seus
+# destinatarios com informacoes em seu corpo, coletadas no 
 # banco de dados online de monitoramento.
 import smtplib
 import email.message
@@ -48,7 +48,7 @@ while (contador < 2):
     # Renderiza corpo do email em dois formatos, vertical e horinzontal por empresa
     msg.set_payload(get_template_bory_email_vertical(int(contador))+"\n<br>"+get_template_bory_email_horizontal(int(contador)))
 
-    # Este print, mostra o html com dados reais, onde podemos colocá-lo em um arquivo .html e olhar no navegador 
+    # Este print, mostra o html com dados reais, onde podemos coloca-lo em um arquivo .html e olhar no navegador 
     # seu comportamento. 
     #print(get_template_bory_email_vertical())
     #print(get_template_bory_email_horizontal())
