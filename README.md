@@ -43,13 +43,21 @@ INSTALAÇÃO PARA DESENVOLVEDORES
     * $ apt install git
 
 * VIRTUALENV 
+    * $ python3 -m pip install --upgrade pip
+    * $ pip3 install virtualenv
     * $ python -m virtualenv myvenv ou
+    * $ python3.6 -m virtualenv myvenv ou
     * $ virtualenv --python='/usr/bin/python3.6' myvenv
+    * $ virtualenv -p /usr/bin/python3.6 myvenv
 
 * PIP
     * $ pip install -r requirements.txt 
 
 * PYTHON
+    * $ sudo add-apt-repository ppa:deadsnakes/ppa
+    * $ sudo apt update
+    * $ sudo apt install python3.6
+
     * $ py_database.py - Responsável por estabelecer comunicação e excutar instruções SQL em um ou mais bancos HOSTs e ou ONLINE
     * $ py_auditit.py - Responsável por coletar via instruições SQL enviadas ao módulo "py_database.py" ou comandos SYSTEM, 
                         dados a serem enviados para o banco de monitoramento online. Este arquivo fica em cada emrpesa a ser

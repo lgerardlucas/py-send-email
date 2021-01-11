@@ -27,7 +27,11 @@ Retorna o tamanho do banco   a ser monitorado
 size_database_host = get_database_data("SELECT pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database where datname = '"+get_config_product_server_db()+"'").replace(' ','')
 if not size_database_host:
     size_database_host = '0MB'
-
+else:
+    if 'MB' in size_database_host:
+        size_database_host = str(round(float(size_database_host.replace('MB',''))/1000,2))+'GB'
+    else:
+        size_database_host
 
 '''
 Retorna o tamanho total, usado, disponivel e percentual do particao 1 e 2
@@ -91,7 +95,7 @@ if COMPANY:
 
     # Nao incluir textos acentuados ate que seja feita a conversao para uft8 no futuro    
     SQL_CLOUD_INSERT_DICT = (
-        {"company":""+COMPANY+"", "key":"Auditoria\n(TI)",          "value": ""+str(DATA_AUDITIT.strftime('%d/%m/%y'))+"",   "date":""+str(DATA_AUDITIT)+"" },
+        {"company":""+COMPANY+"", "key":"Auditoria(TI)",          "value": ""+str(DATA_AUDITIT.strftime('%d/%m/%y'))+"",   "date":""+str(DATA_AUDITIT)+"" },
 
         {"company":""+COMPANY+"", "key":".HD(SO)1\nTotal",          "value": ""+hd1_size_total+"",     "date":""+str(DATA_AUDITIT)+"" },
         {"company":""+COMPANY+"", "key":".HD(SO)2\nUsado",          "value": ""+hd1_size_used+"",      "date":""+str(DATA_AUDITIT)+"" },

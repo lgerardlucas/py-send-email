@@ -28,19 +28,17 @@ def alert_cell_diff(**kwargs):
     """
     # Testando a chave e somente nesta chave testar
     if kwargs.get('key_data') == 'Auditoria(TI)':
-
         # Recuperando a data do dia
         DATE_NOW = get_date_auditit()
     
         # TAG HTML de alerta 
         tag_html = '<td style="color:white; font-size: 16px; text-align: right; background-color: rgb(139, 0, 0);">'
-
+        
         # Testando a data do dados x data do dia
-        if kwargs.get('date_data')[:10] == str(DATE_NOW):
-            return kwargs.get('tag_html_atual')    
-        else:    
-            #return tag_html
+        if kwargs.get('date_data')[:10] == DATE_NOW.strftime('%d/%m/%y'):
             return kwargs.get('tag_html_atual')                
+        else:    
+            return '<td style="color:white; font-size: 16px; text-align: right; background-color: rgb(139, 0, 0);">'
     elif '%Uso' in kwargs.get('key_data'):
         if kwargs.get('date_data').replace('%','') and int(kwargs.get('date_data').replace('%','')) >= 90:
             return '<td style="color:white; font-size: 16px; text-align: right; background-color: rgb(139, 0, 0);">'
