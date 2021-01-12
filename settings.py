@@ -37,7 +37,7 @@ if get_exists_file('conf.ini') != '':
     cfg.read(get_exists_file('conf.ini'))
     # GET referente a versao da estrutura da grade de informacoes py_auditit.py
     def get_version():
-        return 'v.1.07'
+        return 'v.1.08'
 
     # GET dia da semana a que pertence uma data
     def get_weekday():
