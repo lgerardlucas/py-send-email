@@ -9,5 +9,5 @@
 # modulo py_email_bory.py
 import os
 teste = os.system("git pull")
-print('teste'+teste)
+print('teste2'+teste)
 
